@@ -91,3 +91,35 @@ Implemented an original VProfile architecture explorer based on the existing pro
 Motion is bounded: the hero animation finishes, the pipeline entrance plays once, and architecture selections trigger a short detail transition. The former endlessly rotating toolkit ornament is static. Reduced motion CSS disables animations and transitions; content and interactions remain available.
 
 Validation: npm run check passed. HTML audit confirmed unique IDs, valid local anchors/assets, no em dashes, and no reintroduced removed copy. Browser checked at 320, 390, 768, 1280 and 1440 pixels, with no horizontal overflow at the tested sizes. All five diagram buttons update the selected state and detail text; keyboard activation works. Mobile navigation closes after selecting a section. Theme survives reload. All three credential images load. Browser console had no errors or warnings. Reduced motion treatment was inspected in source, not emulated in the browser.
+
+## October 19 vertical career history
+
+Replaced the side-by-side employers with one vertical history, newest first. ResourceDekho retains its grouped full-time and internship roles, followed by DC Infotech. A continuous outer rail connects employers; smaller inner markers connect roles. The current employer has a restrained burnt-orange edge and filled marker. Date alignment adapts to available width, and short connector entrances respect reduced motion. Existing job copy and dates are unchanged.
+
+References reviewed for hierarchy and timeline structure:
+
+- [Mantine Timeline](https://mantine.dev/core/timeline/): connected milestones, active markers, and line treatment.
+- [LinkedIn position grouping](https://www.linkedin.com/help/linkedin/answer/a552185/): retaining multiple positions under one employer.
+- [Work experience timeline](https://www.shadcn.io/blocks/timeline-work-experience): continuous vertical career history.
+
+The implementation uses the existing HTML and CSS without adding a UI library or external dependency.
+
+Validation: employers remain vertically ordered at 320, 390, 600, 768, 1024, 1440, and 1920 pixels, with no horizontal overflow or clipped employer names, role titles, or metadata. Desktop section alignment is flush with the 84px header. Mobile menu navigation closes correctly and retains newest-first role order. JavaScript syntax validation passes. The designated rollback archive remains unchanged.
+
+## Gemini knowledge portal and hover-only credentials
+
+Replaced the VProfile project with the user's Gemini-backed enterprise knowledge web portal. The diagram is a high-level explanation of the supplied project description: portal, grounded AI workflows, secure integration, and three source categories. It deliberately does not specify unprovided cloud products, authentication implementations, APIs, or performance figures. All six nodes update the existing accessible description panel.
+
+The project title, summary, expanded details, and Toolkit links were updated together. Bash, Vagrant, and MySQL remain listed as skills but no longer link to the removed project. Gemini now links to the knowledge portal.
+
+Removed the credential entrance keyframes and removed credential rows from the scroll-reveal observer. Only hovering directly over a badge mount activates its lift; the other badges stay still. Reduced-motion preferences continue to disable the effect.
+
+Validation: six node selections, keyboard activation, project disclosure, and the Gemini Toolkit link checked in the browser. Responsive geometry passed at 320, 390, 600, 601, 768, 900, 1024, and 1440 pixels. All credential rows, mounts, and badges have no animation or transform before hover. Only the hovered badge gains a lift transform. Static validation found no obsolete VProfile references in the page, invalid fragment targets, duplicate IDs, or em dashes. JavaScript syntax and the four pipeline lifecycle tests pass.
+
+## Requested motion additions
+
+Added pointer-driven depth to the hero illustration: the towers and sun move at different rates within small bounds and settle on pointer exit. This is limited to a mouse with a fine pointer and disabled for reduced motion. Project disclosures now animate measured height in both directions while retaining native summary keyboard activation. Rapid reversals cancel the prior animation; resize and reduced-motion changes settle to the requested open state and remove temporary height/overflow styles.
+
+The theme toggle uses a circular reveal centered on the button, with a radius covering the farthest viewport corner. It uses the [View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using), with an immediate theme update when unsupported or reduced motion is requested. Project expansion uses the [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Element/animate). The Toolkit wheel's original slow continuous rotation is restored. Certification badges stay hover-only; diagram connectors remain static.
+
+Validation: observed distinct hero layer transforms and zero offsets after pointer exit; theme reveal state, origin, completion, and button re-enablement checked on desktop and mobile. Both project disclosures checked with click and keyboard activation. Wheel computed animation is `orbit-turn` with infinite iterations. Badge and wire computed animations remain `none`. Eight automated tests pass, including four new disclosure tests for completion, rapid reversals, resize/motion changes, and native fallback behavior. Reduced-motion and unsupported disclosure fallback cases use isolated tests; no browser media emulation was performed. Approved rollback checkpoint unchanged.
